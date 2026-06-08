@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام البرجولا المتحركة - nuvia pergola</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0F0F0F;
+            --secondary: #1A1A1A;
+            --accent: #D4AF37;
+            --accent-light: #F0E68C;
+            --background: #F5F5F0;
+            --text: #0F0F0F;
+            --text-light: #4A4A4A;
+            --border-light: #E0E0D5;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.15);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.2);
+            --shadow-xl: 0 25px 60px rgba(212, 175, 55, 0.15);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+            color: var(--text);
+            background-color: #FFFFFF;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 3.5rem; line-height: 1.2; }
+        h2 { font-size: 2.8rem; }
+        h3 { font-size: 2rem; }
+
+        a {
+            text-decoration: none;
+            color: var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        button, .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #D4AF37 0%, #F0E68C 100%);
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* ========== NAVBAR ========== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(180deg, rgba(245, 245, 240, 0.98) 0%, rgba(245, 245, 240, 0.95) 100%);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 1.2rem 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: 'Cinzel', serif;
+            cursor: pointer;
+        }
+
+        .logo:hover {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            margin-top: 80px;
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #FFFFFF 0%, #F5F5F0 100%);
+            text-align: right;
+        }
+
+        .hero .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* ========== GALLERY ========== */
+        .gallery {
+            padding: 6rem 2rem;
+            background-color: #FFFFFF;
+        }
+
+        .gallery .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            height: 300px;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item:hover {
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-8px);
+        }
+
+        /* ========== FEATURES SECTION ========== */
+        .features {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #F5F5F0 0%, #FAFAF9 100%);
+        }
+
+        .features .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            padding: 2.5rem;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FAFAF9 100%);
+            border-radius: 16px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            text-align: right;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-card:hover {
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            background: #FFFFFF;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* ========== SPECS SECTION ========== */
+        .specs {
+            padding: 6rem 2rem;
+            background-color: #FFFFFF;
+        }
+
+        .specs .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .spec-item {
+            padding: 2rem;
+            background: linear-gradient(135deg, #F5F5F0 0%, #FAFAF9 100%);
+            border-radius: 12px;
+            border-right: 4px solid var(--accent);
+        }
+
+        .spec-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .spec-value {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* ========== FAQ SECTION ========== */
+        .faq {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #F5F5F0 0%, #FAFAF9 100%);
+        }
+
+        .faq .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: #FFFFFF;
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent);
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: var(--primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-icon {
+            color: var(--accent);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            margin-top: 1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        /* ========== CTA SECTION ========== */
+        .cta {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: #FFFFFF;
+            text-align: center;
+        }
+
+        .cta h2 {
+            color: var(--accent-light);
+            margin-bottom: 2rem;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #E7E5E4;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: linear-gradient(180deg, #1A1A1A 0%, #0F0F0F 100%);
+            color: #FFFFFF;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer a {
+            color: var(--accent);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+
+            .hero .container {
+                grid-template-columns: 1fr;
+            }
+
+            .specs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            transform: translateX(5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav>
+        <div class="container">
+            <div class="logo" onclick="location.href='index.html'">🏗️ nuvia pergola</div>
+            <ul class="nav-links">
+                <li><a href="index.html#services">الخدمات</a></li>
+                <li><a href="index.html#about">عننا</a></li>
+                <li><a href="index.html#contact">التواصل</a></li>
+                <li><a href="https://instagram.com/nuvia.pergola" target="_blank"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="top">
+        <div class="container">
+            <div class="hero-content">
+                <a href="index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i>
+                    العودة للصفحة الرئيسية
+                </a>
+                <h1>نظام البرجولا المتحركة</h1>
+                <p>تصميم فاخر مع ألواح متحركة ذكية وإضاءة LED متكاملة وتحكم آلي كامل. تحويل فضاءك الخارجي إلى جنة فاخرة مع الراحة والتكنولوجيا الحديثة</p>
+                <button class="btn btn-primary" onclick="document.getElementById('pricing').scrollIntoView()">اطلب عرض سعر</button>
+            </div>
+            <img src="pergola-1.png" alt="البرجولا المتحركة" class="hero-image">
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>معرض المشاريع</h2>
+                <p>شاهد أحدث مشاريعنا الفاخرة</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="pergola-1.png" alt="مشروع 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="pergola-2.jpg" alt="مشروع 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="pergola-3.jpg" alt="مشروع 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="pergola-4.jpg" alt="مشروع 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="pergola-5.jpg" alt="مشروع 5">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>المميزات الرئيسية</h2>
+                <p>كل ما تحتاجه لتجربة فاخرة</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-cog"></i></div>
+                    <h3>تحكم ذكي</h3>
+                    <p>تحكم كامل بالألواح يدوياً أو عبر التطبيق الذكي من أي مكان</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-sun"></i></div>
+                    <h3>حماية من الشمس</h3>
+                    <p>تحكم ذكي بكمية الضوء والحرارة حسب الطقس والوقت</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h3>إضاءة LED</h3>
+                    <p>نظام إضاءة LED متكامل بألوان قابلة للتخصيص</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-wind"></i></div>
+                    <h3>مقاوم للرياح</h3>
+                    <p>تصميم هندسي قوي يتحمل الرياح والأمطار بكفاءة</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-paint-brush"></i></div>
+                    <h3>ألوان متعددة</h3>
+                    <p>توفر بعشرات الألوان حسب معايير RAL للاختيار</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-leaf"></i></div>
+                    <h3>صديق للبيئة</h3>
+                    <p>تقليل استهلاك الكهرباء والحفاظ على البيئة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPECIFICATIONS SECTION -->
+    <section class="specs" id="specs">
+        <div class="container">
+            <h2 style="text-align: right; margin-bottom: 1rem;">المواصفات التقنية</h2>
+            <p style="text-align: right; color: var(--text-light); margin-bottom: 3rem;">مواد عالية الجودة وتقنيات حديثة</p>
+            <div class="specs-grid">
+                <div class="spec-item">
+                    <div class="spec-label">نوع المادة</div>
+                    <div class="spec-value">ألومنيوم 6063 T5</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">المقاومة</div>
+                    <div class="spec-value">صدأ وتآكل وأمطار</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">الإضاءة</div>
+                    <div class="spec-value">LED RGB متعددة الألوان</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">التحكم</div>
+                    <div class="spec-value">ذكي + يدوي</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">الضمان</div>
+                    <div class="spec-value">10 سنوات</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">سرعة الحركة</div>
+                    <div class="spec-value">15 ثانية قابل للتعديل</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">المقاس</div>
+                    <div class="spec-value">حسب الطلب المخصص</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">الألوان</div>
+                    <div class="spec-value">كل معايير RAL</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>أسئلة شائعة</h2>
+                <p>إجابات على أكثر الأسئلة شيوعاً</p>
+            </div>
+            <div class="faq-items">
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
+                        <span>ما هي مدة التركيب؟</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>مدة التركيب تتراوح من 3-7 أيام حسب حجم المشروع والموقع. نوفر فريق تركيب متخصص يعمل بسرعة واحترافية.</p>
+                    </div>
+                </div>
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
+                        <span>هل تتوفر خدمة الصيانة؟</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>نعم، نوفر خدمة صيانة دورية مجانية خلال فترة الضمان الـ 10 سنوات. بعد ذلك تتوفر خدمات صيانة مدفوعة.</p>
+                    </div>
+                </div>
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
+                        <span>هل البرجولا تتحمل الرياح القوية؟</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>نعم، تم تصميمها لتتحمل رياح بسرعة تصل إلى 80 كم/س. في حالة الرياح الشديدة جداً، تغلق الألواح تلقائياً.</p>
+                    </div>
+                </div>
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
+                        <span>كم تكلفة التشغيل الشهري؟</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>تكلفة التشغيل منخفضة جداً لأن النظام يعمل بكفاءة عالية. تتراوح بين 50-150 ريال شهرياً حسب الاستخدام.</p>
+                    </div>
+                </div>
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
+                        <span>هل يمكن تثبيتها على أي سقف؟</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>نعم، يمكن تثبيتها على معظم أنواع الأسقف. نوفر استشارة مجانية لتقييم الموقع والتأكد من التثبيت الآمن.</p>
+                    </div>
+                </div>
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
+                        <span>هل توجد خيارات دفع مرنة؟</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>نعم، نوفر خيارات دفع مرنة تشمل الدفع الفوري أو بالتقسيط حسب مبلغ المشروع. اتصل بنا للمزيد من التفاصيل.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING SECTION -->
+    <section class="cta" id="pricing">
+        <div class="container">
+            <h2>طلب عرض سعر</h2>
+            <p>احصل على عرض سعر مخصص لمشروعك من فريقنا المتخصص</p>
+            <a href="index.html#pricing" class="btn btn-primary">اطلب عرض سعر الآن</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 nuvia pergola - نظام البرجولا المتحركة الفاخر</p>
+            <p style="margin-top: 1rem;">
+                <a href="https://instagram.com/nuvia.pergola" target="_blank">إنستجرام</a> |
+                <a href="https://wa.me/966523161433" target="_blank">WhatsApp</a> |
+                <a href="tel:+966523161433">الهاتف</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleFAQ(element) {
+            element.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

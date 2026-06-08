@@ -221,6 +221,13 @@
             gap: 2rem;
         }
 
+        .services-grid > a {
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            display: grid;
+        }
+
         .service-card {
             padding: 2rem;
             border: 1px solid var(--border-light);
@@ -746,11 +753,16 @@
                 <p>نقدم حلولاً شاملة لجميع احتياجات الألومنيوم والـ PVC</p>
             </div>
             <div class="services-grid">
-                <div class="service-card fade-in">
-                    <div class="service-icon"><i class="fas fa-window-maximize"></i></div>
-                    <h3>النوافذ الألومنيوم</h3>
-                    <p>نوافذ من أجود الألومنيوم مع عزل حراري وصوتي عالي وتصاميم عصرية</p>
-                </div>
+                <a href="pergola.html" style="text-decoration: none; color: inherit;">
+                    <div class="service-card fade-in service-with-image">
+                        <img src="pergola-1.png" alt="نظام البرجولا المتحركة" class="service-image">
+                        <div class="service-content">
+                            <div class="service-icon"><i class="fas fa-sun"></i></div>
+                            <h3>نظام البرجولا المتحركة</h3>
+                            <p>ألواح متحركة ذكية مع إضاءة LED متكاملة وتحكم آلي كامل</p>
+                        </div>
+                    </div>
+                </a>
                 <div class="service-card fade-in">
                     <div class="service-icon"><i class="fas fa-door-open"></i></div>
                     <h3>الأبواب الفاخرة</h3>
