@@ -260,6 +260,35 @@
             line-height: 1.7;
         }
 
+        .service-with-image {
+            padding: 0 !important;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .service-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .service-with-image:hover .service-image {
+            transform: scale(1.05);
+        }
+
+        .service-content {
+            padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-content .service-icon {
+            align-self: flex-end;
+        }
+
         /* ========== GALLERY SECTION ========== */
         .gallery {
             padding: 6rem 2rem;
@@ -692,6 +721,22 @@
             .form-group textarea,
             .form-group select {
                 text-align: center;
+            }
+
+            .service-image {
+                height: 180px;
+            }
+
+            .service-content {
+                padding: 1.5rem;
+            }
+
+            .service-content .service-icon {
+                align-self: center;
+            }
+
+            .service-icon {
+                font-size: 2.5rem;
             }
         }
 
