@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام الجيوتين الزجاجي - nuvia pergola</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0F0F0F;
+            --secondary: #1A1A1A;
+            --accent: #D4AF37;
+            --accent-light: #F0E68C;
+            --background: #F5F5F0;
+            --text: #0F0F0F;
+            --text-light: #4A4A4A;
+            --border-light: #E0E0D5;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.15);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.2);
+            --shadow-xl: 0 25px 60px rgba(212, 175, 55, 0.15);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+            color: var(--text);
+            background-color: #FFFFFF;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 3.5rem; line-height: 1.2; }
+        h2 { font-size: 2.8rem; }
+        h3 { font-size: 2rem; }
+
+        a {
+            text-decoration: none;
+            color: var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary);
+        }
+
+        button, .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #D4AF37 0%, #F0E68C 100%);
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* ========== NAVBAR ========== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(180deg, rgba(245, 245, 240, 0.98) 0%, rgba(245, 245, 240, 0.95) 100%);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 1.2rem 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-back {
+            color: var(--text);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-back:hover {
+            color: var(--accent);
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            margin-top: 80px;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #FFFFFF 0%, #F5F5F0 50%, #EAEAE5 100%);
+            text-align: right;
+        }
+
+        .hero .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-image {
+            border-radius: 16px;
+            overflow: hidden;
+            height: 400px;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ========== GALLERY SECTION ========== */
+        .gallery {
+            padding: 6rem 2rem;
+            background-color: #FFFFFF;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .gallery .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 250px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-md);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-item:hover {
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-8px);
+        }
+
+        /* ========== FEATURES SECTION ========== */
+        .features {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #F5F3F0 0%, #FAFAF9 100%);
+        }
+
+        .features .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            padding: 2.5rem;
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            text-align: right;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-8px);
+        }
+
+        .feature-card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* ========== SPECIFICATIONS SECTION ========== */
+        .specifications {
+            padding: 6rem 2rem;
+            background-color: #FFFFFF;
+        }
+
+        .specifications .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .spec-item {
+            padding: 2rem;
+            background: linear-gradient(135deg, #FAFAF9 0%, #F5F5F0 100%);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            text-align: right;
+        }
+
+        .spec-label {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .spec-value {
+            color: var(--text);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* ========== FAQ SECTION ========== */
+        .faq {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #F5F3F0 0%, #FAFAF9 100%);
+        }
+
+        .faq .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .faq-item:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: linear-gradient(135deg, #FAFAF9 0%, #F5F5F0 100%);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-question {
+            background: linear-gradient(135deg, #D4AF37 0%, #F0E68C 100%);
+            color: var(--primary);
+        }
+
+        .faq-question h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            text-align: right;
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            color: var(--accent);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+            color: var(--primary);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer p {
+            padding: 1.5rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            border-top: 1px solid var(--border-light);
+        }
+
+        /* ========== CTA SECTION ========== */
+        .cta {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            text-align: center;
+            color: #FFFFFF;
+        }
+
+        .cta .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta p {
+            color: #FFFFFF;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background-color: var(--primary);
+            color: #FFFFFF;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: var(--accent);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #FFFFFF;
+            transform: translateY(-4px);
+        }
+
+        footer p {
+            color: #E7E5E4;
+            font-size: 0.95rem;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            h3 { font-size: 1.5rem; }
+
+            .hero .container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-image {
+                height: 300px;
+            }
+
+            .gallery-item {
+                height: 200px;
+            }
+
+            .features-grid,
+            .specs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-card {
+                text-align: center;
+            }
+
+            .feature-icon {
+                display: inline-block;
+            }
+
+            .faq-question h3 {
+                font-size: 1rem;
+            }
+
+            .cta {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        /* ========== ANIMATIONS ========== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav>
+        <div class="container">
+            <a href="index.html" class="nav-back">
+                <i class="fas fa-arrow-left"></i>
+                العودة
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>نظام الجيوتين الزجاجي المتقدم</h1>
+                <p>نظام نوافذ زجاجية متحركة عصرية تفتح وتغلق عمودياً بسهولة، تجمع بين الجمال الفاخر والأداء العالي. حماية كاملة من الطقس مع تحكم ذكي عن بعد.</p>
+                <a href="index.html#pricing" class="btn btn-primary">اطلب عرض سعر</a>
+            </div>
+            <div class="hero-image">
+                <img src="guillotine-1.jpg" alt="نظام الجيوتين الزجاجي">
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>معرض صور النظام</h2>
+                <p>شاهد التطبيقات الفاخرة لنظام الجيوتين الزجاجي</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in">
+                    <img src="guillotine-1.jpg" alt="نظام الجيوتين الزجاجي الفخم">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="guillotine-2.jpg" alt="تطبيق الجيوتين">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="guillotine-3.jpg" alt="نظام الجيوتين الحديث">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="guillotine-4.jpg" alt="تفاصيل النظام">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="guillotine-5.jpg" alt="التصميم الداخلي">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>المميزات الرئيسية</h2>
+                <p>نظام زجاجي متطور يوفر الراحة والأمان والجمال</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <i class="fas fa-glass-whiskey feature-icon"></i>
+                    <h3>زجاج عالي الجودة</h3>
+                    <p>زجاج شفاف عالي الجودة مع معالجة خاصة للحماية من الحرارة والأشعة فوق البنفسجية</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <i class="fas fa-arrow-up-down feature-icon"></i>
+                    <h3>فتح وإغلاق عمودي</h3>
+                    <p>حركة سلسة وسهلة للفتح والإغلاق العمودي مع أمان عالي منع الإصابات</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <i class="fas fa-lightbulb feature-icon"></i>
+                    <h3>إضاءة LED مخفية</h3>
+                    <p>إضاءة LED عصرية مخفية وديكوراتيفية توفر إضاءة حساسة وجميلة</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <i class="fas fa-cloud-rain feature-icon"></i>
+                    <h3>حماية من الأمطار</h3>
+                    <p>نظام تصريف متقدم يوفر حماية كاملة من الأمطار والرياح القوية</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <i class="fas fa-mobile-alt feature-icon"></i>
+                    <h3>تحكم ذكي عن بعد</h3>
+                    <p>جهاز تحكم عن بعد يتيح فتح وإغلاق النظام من أي مكان بسهولة</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <i class="fas fa-crown feature-icon"></i>
+                    <h3>تصميم فاخر</h3>
+                    <p>تصميم عصري فاخر يضيف قيمة جمالية عالية لأي مكان</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPECIFICATIONS SECTION -->
+    <section class="specifications">
+        <div class="container">
+            <div class="section-header">
+                <h2>المواصفات التقنية</h2>
+                <p>تفاصيل شاملة عن نظام الجيوتين</p>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-item fade-in">
+                    <div class="spec-label">نوع الزجاج</div>
+                    <div class="spec-value">زجاج عالي الجودة</div>
+                </div>
+                <div class="spec-item fade-in">
+                    <div class="spec-label">نوع الألومنيوم</div>
+                    <div class="spec-value">6063-F22 عالي الجودة</div>
+                </div>
+                <div class="spec-item fade-in">
+                    <div class="spec-label">نظام الفتح</div>
+                    <div class="spec-value">عمودي موتوري</div>
+                </div>
+                <div class="spec-item fade-in">
+                    <div class="spec-label">حماية الرياح</div>
+                    <div class="spec-value">مقاومة عالية</div>
+                </div>
+                <div class="spec-item fade-in">
+                    <div class="spec-label">التحكم</div>
+                    <div class="spec-value">جهاز تحكم عن بعد</div>
+                </div>
+                <div class="spec-item fade-in">
+                    <div class="spec-label">الإضاءة</div>
+                    <div class="spec-value">LED مخفية ديكوراتيفية</div>
+                </div>
+                <div class="spec-item fade-in">
+                    <div class="spec-label">التركيب</div>
+                    <div class="spec-value">سهل وسريع</div>
+                </div>
+                <div class="spec-item fade-in">
+                    <div class="spec-label">الضمان</div>
+                    <div class="spec-value">5 سنوات موتور، 2 سنة ميكانيكي</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>أسئلة شائعة</h2>
+                <p>إجابات على أكثر الأسئلة التي يطرحها العملاء</p>
+            </div>
+            <div class="faq-items">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                        <h3>هل يمكن استخدام الجيوتين للشرفات والحدائق؟</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>نعم، نظام الجيوتين مثالي للشرفات والحدائق والتراسات والمطاعم. يمكن استخدامه كبديل لنوافذ عادية مع توفر الراحة والأمان والجمال.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                        <h3>هل النظام آمن وخاصة للأطفال؟</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>بالتأكيد! النظام آمن جداً مع حماية عالية ضد الإصابات. الكفة العلوية المتحركة تمنع انحشار الأيدي، وجميع الأجزاء الحادة محمية بشكل جيد.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                        <h3>هل يحتاج النظام إلى كهرباء؟</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>نعم، يحتاج إلى كهرباء لتشغيل الموتور والإضاءة. التوصيل بسيط وآمن مع جهاز تحكم عن بعد لسهولة الاستخدام.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                        <h3>هل يمكن تنظيف الزجاج بسهولة؟</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>نعم، الزجاج يمكن تنظيفه بسهولة جداً. يفتح تماماً أفقياً لتسهيل التنظيف من الجانبين، مع إمكانية التنظيف في وضع الكفة العلوية (الحد الأدنى من الانفتاح).</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                        <h3>ما هي الألوان والتشطيبات المتاحة؟</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>توفر لك جميع ألوان RAL المعروفة، مع إمكانية اختيار تشطيبات خاصة مثل الألومنيوم المصقول أو المطلي. الزجاج متوفر في نسخ عادية أو معالجة خاصة.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                        <h3>كم تستغرق عملية التركيب؟</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>مدة التركيب تعتمد على حجم المشروع، لكن عادة ما تستغرق من 2 إلى 5 أيام عمل. التركيب سهل لأن الأجزاء تأتي مفككة وجاهزة للتجميع.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta">
+        <div class="container">
+            <h2>هل أنت مهتم بنظام الجيوتين الزجاجي؟</h2>
+            <p>تواصل معنا الآن واحصل على استشارة مجانية من متخصصينا وعرض سعر حصري لمشروعك</p>
+            <a href="index.html#pricing" class="btn btn-primary">اطلب عرض سعر الآن</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://instagram.com/nuviapergola" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/966501234567" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="tel:+966501234567"><i class="fas fa-phone"></i></a>
+                <a href="mailto:info@nuviapergola.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; 2026 nuvia pergola - جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            faqItem.classList.toggle('active');
+        }
+
+        // Fade-in animation observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
