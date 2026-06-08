@@ -326,6 +326,35 @@
             opacity: 1;
         }
 
+        .service-with-image {
+            padding: 0 !important;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .service-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-with-image:hover .service-image {
+            transform: scale(1.05);
+        }
+
+        .service-content {
+            padding: 2.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-content .service-icon {
+            align-self: flex-end;
+        }
+
         .service-icon {
             font-size: 3rem;
             color: var(--accent);
@@ -868,10 +897,13 @@
                 <p>نقدم حلولاً شاملة لجميع احتياجات الألومنيوم والـ PVC</p>
             </div>
             <div class="services-grid">
-                <div class="service-card fade-in">
-                    <div class="service-icon"><i class="fas fa-window-maximize"></i></div>
-                    <h3>النوافذ الألومنيوم</h3>
-                    <p>نوافذ من أجود الألومنيوم مع عزل حراري وصوتي عالي وتصاميم عصرية</p>
+                <div class="service-card fade-in service-with-image">
+                    <img src="pergola-1.png" alt="نظام البرجولا المتحركة" class="service-image">
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fas fa-sun"></i></div>
+                        <h3>نظام البرجولا المتحركة</h3>
+                        <p>ألواح متحركة ذكية مع إضاءة LED متكاملة وتحكم آلي كامل</p>
+                    </div>
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-icon"><i class="fas fa-door-open"></i></div>
