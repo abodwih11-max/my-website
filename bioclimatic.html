@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام البيوكليماتيك - nuvia pergola</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0F0F0F;
+            --secondary: #1A1A1A;
+            --accent: #D4AF37;
+            --accent-light: #F0E68C;
+            --background: #F5F5F0;
+            --text: #0F0F0F;
+            --text-light: #4A4A4A;
+            --border-light: #E0E0D5;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.15);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.2);
+            --shadow-xl: 0 25px 60px rgba(212, 175, 55, 0.15);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+            color: var(--text);
+            background-color: #FFFFFF;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 3.5rem; line-height: 1.2; }
+        h2 { font-size: 2.8rem; }
+        h3 { font-size: 2rem; }
+
+        a {
+            text-decoration: none;
+            color: var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary);
+        }
+
+        button, .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #D4AF37 0%, #F0E68C 100%);
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* ========== NAVBAR ========== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(180deg, rgba(245, 245, 240, 0.98) 0%, rgba(245, 245, 240, 0.95) 100%);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 1.2rem 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-back {
+            color: var(--text);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-back:hover {
+            color: var(--accent);
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            margin-top: 80px;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #FFFFFF 0%, #F5F5F0 50%, #EAEAE5 100%);
+            text-align: right;
+        }
+
+        .hero .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-image {
+            border-radius: 16px;
+            overflow: hidden;
+            height: 400px;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ========== GALLERY SECTION ========== */
+        .gallery {
+            padding: 6rem 2rem;
+            background-color: #FFFFFF;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .gallery .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 250px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-md);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-item:hover {
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-8px);
+        }
+
+        /* ========== FEATURES SECTION ========== */
+        .features {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #F5F3F0 0%, #FAFAF9 100%);
+        }
+
+        .features .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            padding: 2.5rem;
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            text-align: right;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-8px);
+        }
+
+        .feature-card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* ========== SPECIFICATIONS SECTION ========== */
+        .specifications {
+            padding: 6rem 2rem;
+            background-color: #FFFFFF;
+        }
+
+        .specifications .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .spec-item {
+            padding: 2rem;
+            background: linear-gradient(135deg, #FAFAF9 0%, #F5F5F0 100%);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            text-align: right;
+        }
+
+        .spec-label {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .spec-value {
+            color: var(--text);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* ========== FAQ SECTION ========== */
+        .faq {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #F5F3F0 0%, #FAFAF9 100%);
+        }
+
+        .faq .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .faq-item:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: linear-gradient(135deg, #FAFAF9 0%, #F5F5F0 100%);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-question {
+            background: linear-gradient(135deg, #D4AF37 0%, #F0E68C 100%);
+            color: var(--primary);
+        }
+
+        .faq-question h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            text-align: right;
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            color: var(--accent);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+            color: var(--primary);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer p {
+            padding: 1.5rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            border-top: 1px solid var(--border-light);
+        }
+
+        /* ========== CTA SECTION ========== */
+        .cta {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            text-align: center;
+            color: #FFFFFF;
+        }
+
+        .cta .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta p {
+            color: #FFFFFF;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background-color: var(--primary);
+            color: #FFFFFF;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: var(--accent);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #FFFFFF;
+            transform: translateY(-4px);
+        }
+
+        footer p {
+            color: #E7E5E4;
+            font-size: 0.95rem;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            h3 { font-size: 1.5rem; }
+
+            .hero .container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-image {
+                height: 300px;
+            }
+
+            .gallery-item {
+                height: 200px;
+            }
+
+            .features-grid,
+            .specs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-card {
+                text-align: center;
+            }
+
+            .feature-icon {
+                display: inline-block;
+            }
+
+            .faq-question h3 {
+                font-size: 1rem;
+            }
+
+            .cta {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        /* ========== ANIMATIONS ========== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav>
+        <div class="container">
+            <a href="index.html" class="nav-back">
+                <i class="fas fa-arrow-left"></i>
+                العودة
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>نظام البيوكليماتيك المتقدم</h1>
+                <p>نظام تظليل ذكي مع ألواح متحركة قابلة للتحكم، يوفر راحة فائقة وكفاءة طاقية عالية. تحكم كامل بالإضاءة والتهوية حسب الحاجة والطقس.</p>
+                <a href="index.html#pricing" class="btn btn-primary">اطلب عرض سعر</a>
+            </div>
+            <div class="hero-image">
+                <img src="bioclimatic-1.jpg" alt="نظام البيوكليماتيك">
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>معرض صور النظام</h2>
+                <p>شاهد تطبيقات نظام البيوكليماتيك في مختلف المشاريع</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in">
+                    <img src="bioclimatic-1.jpg" alt="نظام البيوكليماتيك الفخم">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="bioclimatic-2.jpg" alt="تطبيق البيوكليماتيك">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="bioclimatic-3.jpg" alt="نظام البيوكليماتيك الحديث">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="bioclimatic-4.jpg" alt="تفاصيل النظام">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="bioclimatic-5.jpg" alt="التصميم الداخلي">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>المميزات الرئيسية</h2>
+                <p>نظام متكامل يجمع بين الراحة والكفاءة والجمال</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <i class="fas fa-cog feature-icon"></i>
+                    <h3>ألواح متحركة ذكية</h3>
+                    <p>ألواح موتورية قابلة للتحكم عن بعد، تفتح وتغلق تلقائياً حسب الحاجة والطقس</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <i class="fas fa-leaf feature-icon"></i>
+                    <h3>كفاءة الطاقة العالية</h3>
+                    <p>تقليل استهلاك الكهرباء بنسبة تصل إلى 40% من خلال التحكم الذكي بالإضاءة والتهوية</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <i class="fas fa-lightbulb feature-icon"></i>
+                    <h3>إضاءة LED متقدمة</h3>
+                    <p>نظام إضاءة LED ثنائي أو ثلاثي الاتجاهات مع تحكم ذكي بالألوان والسطوع</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <i class="fas fa-shield-alt feature-icon"></i>
+                    <h3>حماية من الأمطار والرياح</h3>
+                    <p>نظام تصريف متقدم يحمي من الأمطار الغزيرة ومقاومة عالية للرياح حتى 112 كم/س</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <i class="fas fa-cloud feature-icon"></i>
+                    <h3>تكييف ذكي للمناخ</h3>
+                    <p>ألواح معزولة بخيارات متعددة للتكيف مع جميع الظروف المناخية</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <i class="fas fa-check-circle feature-icon"></i>
+                    <h3>جودة عالية مضمونة</h3>
+                    <p>مواد ألومنيوم من الدرجة الأولى مع ضمان 5 سنوات على الموتور و2 سنة على الأجزاء الميكانيكية</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPECIFICATIONS SECTION -->
+    <section class="specifications">
+        <div class="container">
+            <div class="section-header">
+                <h2>المواصفات التقنية</h2>
+                <p>تفاصيل شاملة عن مميزات النظام</p>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-item fade-in">
+                    <div class="spec-label">قطر الفتحة</div>
+                    <div class="spec-value">حتى 8.5 متر</div>
+                </div>
+                <div class="spec-item fade-in">
+                    <div class="spec-label">مقاومة الرياح</div>
+                    <div class="spec-value">112 كم/س بدون كسر</div>
+                </div>
+                <div class="spec-item fade-in">
+                    <div class="spec-label">مقاومة الثلج</div>
+                    <div class="spec-value">100 كغ/م² (مع الوزن الذاتي)</div>
+                </div>
+                <div class="spec-item fade-in">
+                    <div class="spec-label">نوع الألومنيوم</div>
+                    <div class="spec-value">6063-T6 عالي الجودة</div>
+                </div>
+                <div class="spec-item fade-in">
+                    <div class="spec-label">نظام تصريف المياه</div>
+                    <div class="spec-value">4 أخاديد بدون منحنيات</div>
+                </div>
+                <div class="spec-item fade-in">
+                    <div class="spec-label">الإضاءة</div>
+                    <div class="spec-value">LED 12 فولت مع تحكم ذكي</div>
+                </div>
+                <div class="spec-item fade-in">
+                    <div class="spec-label">التحكم</div>
+                    <div class="spec-value">جهاز تحكم عن بعد + تطبيق ذكي</div>
+                </div>
+                <div class="spec-item fade-in">
+                    <div class="spec-label">الضمان</div>
+                    <div class="spec-value">5 سنوات موتور، 2 سنة ميكانيكي</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>أسئلة شائعة</h2>
+                <p>إجابات على أكثر الأسئلة التي يطرحها العملاء</p>
+            </div>
+            <div class="faq-items">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                        <h3>هل يمكن التحكم به تلقائياً حسب الطقس؟</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>نعم، النظام مجهز بمجسات طقس متقدمة تتحكم تلقائياً بالألواح حسب درجة الحرارة والرياح والأمطار، كما يمكنك التحكم اليدوي من جهاز التحكم أو التطبيق الذكي.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                        <h3>كم تستغرق عملية التركيب؟</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>مدة التركيب تعتمد على حجم المشروع وتعقيده، لكن عادة ما تستغرق من 3 إلى 7 أيام عمل، والتركيب سهل لأن الأجزاء تأتي مفككة وجاهزة للتجميع.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                        <h3>هل النظام يحتاج إلى صيانة دورية؟</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>الصيانة بسيطة وأساسية - فقط تنظيف الأخاديس وتزييت الأجزاء المتحركة بشكل دوري. نوفر برنامج صيانة سنوي مجاني للعملاء.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                        <h3>هل يتحمل الثلوج والعواصف؟</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>بالتأكيد! النظام مختبر ومعتمد بمعايير أوروبية عالية ويتحمل ثلجاً بوزن 100 كغ/م² ورياحاً بسرعة 112 كم/س دون أي تأثر.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                        <h3>ما هي خيارات الألوان والمواد؟</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>توفر لك جميع ألوان RAL المعروفة، إضافة إلى خيارات نسيجية حصرية وألوان مخصصة حسب رغبتك، والألومنيوم المستخدم من أعلى الدرجات العالمية.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                        <h3>ما هي تكاليف التشغيل والصيانة؟</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>تكاليف التشغيل منخفضة جداً لأن استهلاك الطاقة قليل جداً، والصيانة بسيطة وغير مكلفة. الموتور مضمون لمدة 5 سنوات كاملة بدون أي تكاليف إضافية.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta">
+        <div class="container">
+            <h2>هل أنت مهتم بنظام البيوكليماتيك؟</h2>
+            <p>تواصل معنا الآن واحصل على استشارة مجانية من متخصصينا وعرض سعر حصري</p>
+            <a href="index.html#pricing" class="btn btn-primary">اطلب عرض سعر الآن</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://instagram.com/nuviapergola" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/966501234567" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="tel:+966501234567"><i class="fas fa-phone"></i></a>
+                <a href="mailto:info@nuviapergola.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; 2026 nuvia pergola - جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            faqItem.classList.toggle('active');
+        }
+
+        // Fade-in animation observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
