@@ -1,0 +1,6 @@
+[submodule ".claude/skills/onetake"]
+	path = .claude/skills/onetake
+	url = https://github.com/feitangyuan/onetake
+[submodule ".claude/skills/collage-broll-explainers"]
+	path = .claude/skills/collage-broll-explainers
+	url = https://github.com/MegaTroll222/VOX-COLLAGE-BROLL
